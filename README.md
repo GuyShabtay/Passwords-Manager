@@ -17,12 +17,16 @@ AES_KEY='your AES key'
 - Start the application:
 <pre><code>npm start</code></pre>
 
+- In order to run the tests, while the application is running open a new terminal and write:
+<pre><code>npm test</code></pre>
+
 ## Technologies
 - HTML
 - CSS
 - JavaScript
 - React
 - Axios
+- Selenium
 - Mui
 - Node.js
 - Express
@@ -39,4 +43,12 @@ AES_KEY='your AES key'
 - Add new credentials (website name and pssword)
 - Search for a password by website name
 - Add, view, edit and delete credentials related to a user
+- Logout
+
+## Tests
+- Register
+- Login
+- Add new credentials (website name and pssword)
+- Search for a password by website name
+- Add credentials related to a user
 - Logout

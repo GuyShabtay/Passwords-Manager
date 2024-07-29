@@ -7,8 +7,8 @@
     "start:frontend": "cd frontend && npm run dev",
     "start:backend": "cd backend && npm start",
     "start": "npm-run-all --parallel start:frontend start:backend",
-    "install:all": "npm install --prefix frontend && npm install --prefix backend"
-
+    "install:all": "npm install --prefix frontend && npm install --prefix backend",
+    "test": "cd frontend && node test.js"
   },
   "author": "",
   "license": "ISC",
