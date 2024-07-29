@@ -1,0 +1,51 @@
+#navbar {
+  width: 100%;
+  height: 70px;
+  /* background-color: #9e75ff; */
+  background: url(/src/assets/images/purple.jpg) no-repeat center center/cover;;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+#logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#logo-text {
+  width: 400px;
+}
+#logo-icon {
+  width: 55px;
+  margin-right: 10px;
+}
+p {
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+}
+@media (max-width: 768px) {
+  #navbar{
+    height: 80px;
+    align-items: flex-start;
+    padding:10px 20px;
+  }
+  #logo-text {
+    width: 200px;
+  }
+  #logo-icon {
+    width: 25px;
+    margin-right: 10px;
+  }
+  p {
+    margin-top: 40px;
+  }
+}

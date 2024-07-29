@@ -1,0 +1,33 @@
+#delete-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#delete-modal-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* background-color: #03a2d7; */
+  background: url(/src/assets/images/purple.jpg) no-repeat center center/cover;;
+
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+#btn-delete{
+  background-color: red;
+  margin-left: 10px;
+  color: white;
+}
+#delete-validation-text{
+  margin-bottom: 15px;
+}

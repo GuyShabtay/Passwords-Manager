@@ -1,0 +1,42 @@
+# Passwords Manager
+<p>Secure password manager that stores user passwords in an encrypted 
+format and allows users to retrieve and manage their passwords.</p>
+
+## How to run this project
+
+- Install dependecies:
+<pre><code>npm run install:all</code></pre>
+
+- Add to the backend folder a file called ```.env``` and in that file add these variables: 
+ ```bash
+TOKEN_KEY='your token key'
+MONGODB_URL='your MongoDB url'
+AES_KEY='your AES key'
+  ```
+
+- Start the application:
+<pre><code>npm start</code></pre>
+
+## Technologies
+- HTML
+- CSS
+- JavaScript
+- React
+- Axios
+- Mui
+- Node.js
+- Express
+- MongoDB
+- Bcrypt
+- Cors
+- Dotnev
+- Jsonwebtoken
+- AES
+
+## Features
+- Register
+- Login
+- Add new credentials (website name and pssword)
+- Search for a password by website name
+- Add, view, edit and delete credentials related to a user
+- Logout
