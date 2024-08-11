@@ -17,6 +17,10 @@ AES_KEY='your AES key'
 - Start the application:
 <pre><code>npm start</code></pre>
 
+- Enter to this URL on your browser
+<pre><code>http://localhost:5173/</code></pre>
+
+
 - In order to run the tests, while the application is running open a new terminal and write:
 <pre><code>npm test</code></pre>
 
