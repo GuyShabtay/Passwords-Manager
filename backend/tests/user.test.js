@@ -1,7 +1,6 @@
 import request from 'supertest';
 import express from 'express';
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { User } from '../models/UserModel.js';
 import { AccountDetails } from '../models/AccountDetailsModel.js';

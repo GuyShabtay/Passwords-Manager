@@ -9,11 +9,26 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [serverLoading, setServerLoading] = useState(true);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     sessionStorage.clear();
+
+    // Wake up server
+    const wakeUpServer = async () => {
+      try {
+        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/wakeup`); // create a lightweight endpoint
+        enqueueSnackbar('Server is awake!', { variant: 'success' });
+      } catch (err) {
+        enqueueSnackbar('Failed to wake up server', { variant: 'error' });
+      } finally {
+        setServerLoading(false);
+      }
+    };
+
+    wakeUpServer();
   }, []);
 
   const handleSubmit = async (e) => {
@@ -26,6 +41,7 @@ const Login = () => {
       enqueueSnackbar('All fields are required', { variant: 'error' });
       return;
     }
+
     try {
       setLoading(true);
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
@@ -43,27 +59,34 @@ const Login = () => {
       } else {
         enqueueSnackbar('Error logging in', { variant: 'error' });
       }
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
     <div id='login'>
-    <div id='login-box'>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button className="btn-secondary" type="submit">Submit</button>
-      </form>
-      <div className='account-question'>
+      <div id='login-box'>
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">Email</label>
+          <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <button className="btn-secondary" type="submit" disabled={serverLoading}>Submit</button>
+        </form>
+        <div className='account-question'>
         <span>Don't have an account?</span>
         <Link to="/register" id="register-btn">Register</Link>
-      </div>
-      {loading && (<img src={loader} id='loader' alt='Loading...' />)}
-    </div>
+        </div>
+        
+        </div>
+        {serverLoading && (
+          <div className='server-status'>
+            <p>Waking up the server, please wait...</p>
+            <div className="loader"></div>
+          </div>
+        )}
     </div>
   );
 };

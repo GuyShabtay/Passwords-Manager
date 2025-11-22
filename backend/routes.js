@@ -1,10 +1,11 @@
 import express from 'express';
-import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import {AccountDetails} from './models/AccountDetailsModel.js';
 import {User} from './models/UserModel.js';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
+import argon2 from 'argon2';
+
 dotenv.config();
 
 const algorithm = 'aes-256-cbc';
@@ -38,18 +39,17 @@ router.post('/register', async (req, res) => {
   const { userName, email, password } = req.body;
   try {
     const userExists = await User.findOne({ email });
+    if (userExists) return res.status(400).json({ error: 'User already exists' });
 
-    if (userExists) {
-      return res.status(400).json({ error: 'User already exists' });
-    }
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    // Hash password with argon2
+    const hashedPassword = await argon2.hash(password);
 
     const newUser = new User({ userName, email, password: hashedPassword });
     await newUser.save();
 
     const accountDetails = new AccountDetails({ email });
     await accountDetails.save();
+
     res.json(newUser);
   } catch (err) {
     console.error(err.message);
@@ -57,28 +57,26 @@ router.post('/register', async (req, res) => {
   }
 });
 
+
 // User login
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
+    if (!user) return res.status(400).json({ error: 'Invalid email or password' });
 
-    if (!user) {
-      return res.status(400).json({ error: 'Invalid email or password' });
-    }
-    const validPassword = await bcrypt.compare(password, user.password);
+    // Verify password with argon2
+    const validPassword = await argon2.verify(user.password, password);
+    if (!validPassword) return res.status(400).json({ error: 'Invalid email or password' });
 
-    if (!validPassword) {
-      return res.status(400).json({ error: 'Invalid email or password' });
-    }
     const token = jwt.sign({ email: user.email }, TOKEN_KEY, { expiresIn: '1h' });
-    const userName = user.userName;
-    res.json({ token, userName });
+    res.json({ token, userName: user.userName });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
 });
+
 
 // Add credentials
 router.post('/credentials', async (req, res) => {
@@ -208,6 +206,14 @@ router.delete('/credentials/:id', async (req, res) => {
     console.error('Error deleting credential:', err.message);
     res.status(500).send('Server Error');
   }
+});
+
+// Wake-up endpoint
+router.get('/wakeup', (req, res) => {
+  res.status(200).send('Server is awake!');
+  //   setTimeout(() => {
+  //   res.status(200).send('Server is awake!');
+  // }, 5000); // 5000ms = 5 seconds
 });
 
 export default router;
