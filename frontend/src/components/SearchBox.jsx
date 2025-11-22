@@ -19,7 +19,7 @@ export default function SearchBox({credentialsList,setCredentialsList,fetchCrede
   const handleSearch = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:8000/api/credentials', {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/credentials`, {
         params: { email, website }
       });
   

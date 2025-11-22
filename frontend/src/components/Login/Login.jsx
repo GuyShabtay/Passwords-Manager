@@ -28,7 +28,7 @@ const Login = () => {
     }
     try {
       setLoading(true);
-      const response = await axios.post('http://localhost:8000/api/login', {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
         email,
         password
       });

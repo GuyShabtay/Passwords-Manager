@@ -27,7 +27,7 @@ const Credentials = ({ credentials }) => {
   const handleDelete = async () => {
     try {
       setLoading(true);
-      const response= await axios.delete(`http://localhost:8000/api/credentials/${credentials.id}`, {
+      const response= await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/credentials/${credentials.id}`, {
         params: { email } 
       });
       setIsModalOpen(false);

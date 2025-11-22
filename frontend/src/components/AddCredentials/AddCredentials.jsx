@@ -28,7 +28,7 @@ const AddCredentials = () => {
     setLoading(true);
     const formData = { email, website, password };
     try {
-      const response = await axios.post('http://localhost:8000/api/credentials', formData);
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/credentials`, formData);
       enqueueSnackbar('credentials added successfully', { variant: 'success' });
       navigate(-1);
     } catch (error) {

@@ -16,7 +16,7 @@ const HomePage = () => {
   const fetchCredentialsList = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/credentials/${email}`
+        `${import.meta.env.VITE_BACKEND_URL}/api/credentials/${email}`
       );
       const credentialsData = response.data;
       setCredentialsList(credentialsData);
