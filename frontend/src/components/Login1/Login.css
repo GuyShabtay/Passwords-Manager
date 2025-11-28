@@ -1,0 +1,453 @@
+#login{ 
+height: 100vh;
+width: 100vw;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+background: url(../../assets//images/b.jpg) no-repeat center center/cover !important ;
+}
+#login .logo{
+  width: 50px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+/* #login .one-line{
+  margin: 20px 0px; 
+} */
+/* #login h1{
+  color: white !important;
+  background: linear-gradient(to right, #770478, #e285f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 80px;
+    margin-bottom: 0px;
+} */
+ .switch {
+  width: 400px;
+  /* border: green 3px solid; */
+}
+ .switch-btn {
+  margin-left: 6px;
+  background: transparent;
+  border: none;
+  color: #004fcf;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+ .switch-btn:hover {
+  scale: 1.1;
+}
+/* .switch-text{
+  color: black !important;
+} */
+/* #login-container h1{
+  margin: 0;
+  white-space: nowrap;
+  color: #003782;
+} */
+/* #login-container h1{
+  color: white ;
+    margin-bottom: 0px;
+    white-space: nowrap;
+} */
+/* .password-logo{
+  font-size: 50px !important;
+  color: white;
+  margin-right: 10px;
+} */
+#login-container{
+  /* backdrop-filter: blur(30px); */
+  background: rgba(255, 255, 255, 0.342);
+  color: #181818;
+  border: 1px solid #e5e5e5;
+  /* height: fit-content !important;
+  width:fit-content !important; */
+  height:600px;
+  /* padding: 50px 50px !important; */
+  border-radius: 20px;
+  z-index: 9999;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+/* justify-content: center;
+align-items:center;
+flex-direction: column; */
+    box-shadow: #0b2a5d 0px 30px 30px -20px;
+    transition: all 0.3s ease-in-out;
+
+}
+#login-box{
+  margin: 50px 50px !important;
+    display: flex;
+    justify-content: center;
+align-items:center;
+flex-direction: column;
+
+}
+#lock{
+  height: 100%;
+  /* border-radius: 0 ; */
+  /* background: url(../../assets//images/lock.jpg) no-repeat center center/cover !important ; */
+  /* z-index: 300; */
+
+
+}
+#login-container:hover{
+ scale: 1.04;
+     box-shadow: #0b2a5d 0px 20px 30px -20px;
+}
+
+.form-box{
+   display: flex;
+justify-content: center;
+align-items:center;
+flex-direction: column;
+margin: 10px 0;
+}
+#login-icon{
+  width: 180px;
+  /* margin-bottom: 10px; */
+}
+#lahav-icons-box{
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  display: flex;
+}
+.lahav-icon{
+  width: 80px;
+  margin-left: 10px;
+}
+.cyber-icon{
+  width: 80px;
+}
+
+.submit-btn:active {
+ box-shadow: none !important;
+}
+
+
+
+.input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  margin: 20px 0;
+}
+
+
+#password-field {
+  caret-color: #004fcf;
+}
+
+.password-icon {
+  position: absolute;
+  fill: #004fcf;
+  width: 14px;
+  top: -23px;
+  left: -18px; 
+  opacity: 0;
+  transition: 0.2s linear;
+}
+
+.password-label {
+  position: absolute;
+  top: -25px;
+  left: 0px; 
+  color: gray;
+  font-size: 14px;
+  font-weight: 600;
+  overflow: hidden;
+  transition: 0.2s linear;
+  opacity: 0;
+}
+
+#password-field:focus ~ .password-label,
+#password-field:valid ~ .password-label {
+  transform: translateX(20px); 
+  opacity: 1;
+}
+
+#password-field:focus ~ .password-icon,
+#password-field:valid ~ .password-icon {
+  transform: translateX(20px); 
+  opacity: 1;
+}
+
+#password-field:focus,
+#password-field:valid {
+  transition-duration: 0.3s;
+}
+
+
+.form-box .input {
+  width: 250px;
+  background: rgb(254, 251, 255);
+  border: none;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: #0b2a5d 0px 10px 10px -5px;
+  border-inline: 2px solid transparent;
+  
+}
+
+.form-box .input::-moz-placeholder {
+  color: gray;
+}
+
+.form-box .input::placeholder {
+  color: gray;
+}
+
+.form-box .input:focus {
+  transition: all ease-in-out 0.3s;
+  outline: none;
+  border-inline: 2px solid #004fcf;
+  box-shadow: #0b2a5d 0px 8px 8px -5px;
+
+}
+.form-box .input-container:hover .input{
+  transition: all 0.3s ease-in-out;
+  /* box-shadow: #491f5d 0px 15px 20px -10px;  */
+    box-shadow: #0b2a5d 0px 8px 8px -5px;
+  border-inline: 2px solid #004fcf; 
+  cursor: text; 
+}
+
+
+.submit-btn {
+  position: relative;
+  overflow: hidden;
+  margin: 20px 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  color: #004fcf !important;
+   background-color: #e0e8ef84 !important;
+
+  border: 2px solid rgba(255, 255, 255, 0.333) !important;
+  border-radius: 40px !important;
+  padding: 30px 80px !important;
+  box-shadow: -4px -2px 16px 0px #ffffff, 4px 5px 10px 0px #004fcf70;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.submit-btn .btn-text {
+  position: absolute;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: translateX(0);
+  opacity: 1;
+  white-space: nowrap;
+}
+
+#submit-icon {
+  position: absolute;
+  width: 30px;
+  transform: translateX(-300%);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.submit-btn:hover .btn-text {
+  transform: translateX(150%);
+  opacity: 0;
+}
+
+.submit-btn:hover #submit-icon {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.submit-btn:hover {
+  /* color: #7d499e !important; */
+ background-color: #e7eff784 !important;
+  box-shadow: -2px -1px 8px 0px #ffffff, 2px 3px 6px 0px #004fcf70;
+}
+
+
+
+
+.eye-box {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  z-index: 10; 
+}
+
+
+.eye-icon,
+.eye-slash-icon {
+  position: absolute;
+  width: 100%;
+  height: 100%; 
+    transition: all 0.4s cubic-bezier(0.3, 0.8, 0.3, 2.3);
+}
+.eye-slash-icon.visible:hover,
+.eye-icon.visible:hover {
+  scale: 1.1;
+      transition: all 0.4s ease-in-out;
+
+}
+.eye-icon.visible {
+ transform: translateY(0px);
+   transition: all 0.4s cubic-bezier(0.3, 0.8, 0.3, 2.3);
+     color: #004fcf !important;
+
+
+}
+.eye-icon.hidden {
+ transform: translateY(10px);
+   transition: all 0.4s cubic-bezier(0.3, 0.8, 0.3, 2.3);
+   opacity: 0;
+
+}
+.eye-slash-icon.visible {
+ transform: translateY(0px);
+   transition: all 0.4s cubic-bezier(0.3, 0.8, 0.3, 2.3);
+      color: #80808095;
+
+
+}
+.eye-slash-icon.hidden {
+ transform: translateY(-10px);
+   transition: all 0.4s cubic-bezier(0.3, 0.8, 0.3, 2.3);
+      opacity: 0;
+}
+
+@media (max-width: 1900px) { 
+  #login-box{
+  height: 500px;  
+  width: 400px;
+}
+#login h1{
+  font-size: 60px;
+}
+#login .logo{
+  width: 40px;
+}
+#login-icon{
+  width: 150px;
+}
+.input-container {
+  margin: 30px 0 10px 0;
+}
+.submit-btn {
+  font-size: 22px !important;
+}
+.lahav-icon{
+  width: 60px;
+}
+.cyber-icon{
+  width: 60px;
+}
+}
+
+
+
+
+/* make entire login container LTR */
+#login {
+  direction: ltr;
+}
+
+/* username-specific container (left icon + left floating label) */
+.input-container.username {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 250px; /* keep consistent with other inputs */
+}
+
+/* input ID used in jsx is #username-field — but using .input for styling is fine */
+.input-container.username .input {
+  /* inherits same .form-box .input styles, no need to re-declare unless you want changes */
+}
+
+/* person icon (left side) */
+.userIcon {
+  position: absolute;
+  fill: #004fcf;
+  width: 14px;         /* slightly larger than example for readability */
+  top: -23px;
+  left: -18px;         /* places icon to the left, outside input similar to your example */
+  opacity: 0;
+  transition: .2s linear;
+}
+
+/* floating label on the left */
+.usernameLabel {
+  position: absolute;
+  top: -25px;
+  left: 5px;
+  color: gray;
+  font-size: 14px;
+  font-weight: 600;
+  overflow: hidden;
+  transition: .2s linear;
+  opacity: 0;
+}
+
+/* when focused or valid, slide label and icon in */
+#username-field:focus ~ .usernameLabel,
+#username-field:valid ~ .usernameLabel {
+  transform: translateX(20px);
+  opacity: 1;
+}
+
+#username-field:focus ~ .userIcon,
+#username-field:valid ~ .userIcon {
+  transform: translateX(20px);
+  opacity: 1;
+}
+
+/* keep input focus style consistent */
+#username-field:focus,
+#username-field:valid {
+  transition-duration: .3s;
+}
+/* Force password input and all its nested elements to behave LTR */
+.input-container.password,
+.input-container.password * {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+
+
+/* Username */
+.input-container.username .input:focus ~ .usernameLabel,
+.input-container.username .input:valid ~ .usernameLabel {
+  transform: translateX(20px);
+  opacity: 1;
+}
+
+.input-container.username .input:focus ~ .userIcon,
+.input-container.username .input:valid ~ .userIcon {
+  transform: translateX(20px);
+  opacity: 1;
+}
+
+/* Password */
+.input-container.password .input:focus ~ .password-label,
+.input-container.password .input:valid ~ .password-label {
+  transform: translateX(20px);
+  opacity: 1;
+}
+
+.input-container.password .input:focus ~ .password-icon,
+.input-container.password .input:valid ~ .password-icon {
+  transform: translateX(20px);
+  opacity: 1;
+}

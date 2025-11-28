@@ -6,6 +6,12 @@ import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import Credentials from '../Credentials/Credentials';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
+import TabsSwitcher1 from '../TabsSwitcher1';
+import secure from '../../assets/images/sheild1.jpg';
+import { Button, Box } from '@mui/material';
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
+
+
 
 const HomePage = () => {
   const [credentialsList, setCredentialsList] = useState([]);
@@ -31,8 +37,6 @@ const HomePage = () => {
 
   return (
     <div id='home-page'>
-      <div id='main-background'></div>
-      <SearchBox credentialsList={credentialsList} setCredentialsList={setCredentialsList} fetchCredentialsList={fetchCredentialsList} />
       <div id='credentials-list'>
       <AddToPhotosIcon id='add-credentials-icon' onClick={handleAddCredentials} />
         <div className='credentials-container'>
@@ -41,7 +45,13 @@ const HomePage = () => {
               <Credentials key={credentials._id} credentials={credentials} />
             ))}
         </div>
+
       </div>
+      <TabsSwitcher1 />
+       <Button className="submit-btn" type="submit">
+                    <span ><AddRoundedIcon className='add-icon'/></span>
+                  </Button>
+
     </div>
   );
 };

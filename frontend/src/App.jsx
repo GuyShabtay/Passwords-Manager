@@ -7,16 +7,23 @@ import EditCredentials from './components/EditCredentials';
 import Layout from './components/Layout';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
+// import LoginPage from './components/LoginPage';
+import FullApp from './components/FullApp';
+import './index.scss'
+import MaterialLogin from './components/MaterialLogin';
+// import TabsSwitcherDemo from './components/TabsSwitcherDemo';
+import TabsSwitcher1 from './components/TabsSwitcher1'
+import Auth from './components/Auth/Auth'
 
 const App = () => {
   const router = createHashRouter([
     {
       path: '/',
-      element: <Layout><Login /></Layout>,
+      element: <Auth />,
     },
     {
       path: '/login',
-      element: <Layout><Login /></Layout>,
+      element: <Auth />,
     },
     {
       path: '/register',
@@ -34,6 +41,10 @@ const App = () => {
       path: '/edit-credentials',
       element: <Layout><EditCredentials /></Layout>,
     },
+    // {
+    //   path: '/login-page',
+    //   element: <Layout><LoginPage /></Layout>,
+    // },
   ]);
 
   return (

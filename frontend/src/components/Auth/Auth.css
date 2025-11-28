@@ -1,0 +1,61 @@
+/* Base styles */
+#auth-wrapper {
+  height: 100vh;
+  width: 100vw;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  position: relative;
+  overflow: hidden;
+}
+.auth-box {
+  transition: all 1s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+/* LOGIN showing */
+.login-box.fade-right-in {
+  opacity: 1;
+  /* transform: translateX(0); */
+  pointer-events: auto;
+}
+
+/* LOGIN hiding */
+.login-box.fade-right-out {
+  opacity: 0;
+  transform: translateX(500px);
+}
+
+/* REGISTER showing */
+.register-box.fade-left-in {
+  opacity: 1;
+  /* transform: translateX(0); */
+  pointer-events: auto;
+}
+
+/* REGISTER hiding */
+.register-box.fade-left-out {
+  opacity: 0;
+  transform: translateX(-500px);
+}
+#auth-wrapper h1{
+  color: white ;
+    white-space: nowrap;
+}
+.auth-logo-box.one-line{
+    white-space: nowrap;
+    margin-top: 50px;
+}
+.auth-password-logo{
+  font-size: 70px !important;
+  color: white;
+  margin: 0 10px 10px 0;
+}
+.auth-text-logo{
+  height: 50px;
+}

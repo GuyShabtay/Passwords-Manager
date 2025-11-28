@@ -36,7 +36,7 @@ const EditCredentials = () => {
 
     try {
       const response = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/api/credentials/${location.state.credentials.id}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api//credentials/${location.state.credentials.id}`,
         formData
       );
       enqueueSnackbar('Credentials updated successfully', { variant: 'success' });

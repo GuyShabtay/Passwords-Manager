@@ -1,0 +1,254 @@
+.twofa-container {
+  /* width: 400px !important;
+  height: 200px;
+  min-width: 420px; */
+  /* position: fixed;
+  z-index: 10; */
+}
+
+.twofa-card {
+  /* background: white; */
+    /* background: rgba(255, 255, 255, 0.342); */
+
+  border-radius: 20px 0 0 20px;
+  padding: 32px;
+  border: 1px solid #eee;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  width: 500px !important;
+  height: 600px;
+   position: fixed;
+   left: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.twofa-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  /* background: #04113e; */
+    background: linear-gradient(to bottom, #0078fd, rgba(11, 7, 61, 1));
+
+  border-radius: 16px;
+  display: flex;
+  margin: 0 auto 24px;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+/* .twofa-icon-wrapper:hover {
+  transform: scale(1.1) rotate(12deg);
+} */
+
+.twofa-icon {
+  width: 32px;
+  height: 32px;
+  color: white;
+}
+
+.twofa-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.twofa-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #003c9c;
+  margin-bottom: 5px;
+}
+
+.twofa-subtitle {
+  font-size: 14px;
+  color: #003c9c;
+}
+
+.twofa-email {
+  font-size: 14px;
+  color: #003385;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.twofa-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.twofa-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.twofa-input {
+  width: 48px;
+  height: 56px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  color: #003c9c;
+  background: #f9f9f9;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  transition: 0.2s;
+}
+.twofa-input::placeholder {
+  color: #003c9c;  
+}
+.twofa-input:focus {
+  outline: none;
+  background: white;
+  border-color: #003c9c;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transform: scale(1.1);
+}
+
+.twofa-submit {
+  width: 100%;
+  padding: 14px;
+  /* background: linear-gradient(to right, #111, #444); */
+  background: linear-gradient(to left, #0078fd, rgba(11, 7, 61, 1));
+
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.twofa-submit:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.twofa-submit:active {
+  transform: scale(0.98);
+}
+
+.twofa-submit-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.twofa-submit-icon {
+  width: 20px;
+  height: 20px;
+  transition: 0.3s;
+}
+
+.twofa-submit:hover .twofa-submit-icon {
+  transform: translateX(4px);
+}
+
+.twofa-divider {
+      text-align: center ;
+        /* width: 500px !important; */
+          /* border: 3px solid green; */
+
+
+
+}
+
+
+
+.twofa-divider-line {
+  width: 150px;
+  height: 0.5px;
+  background-color: #003c9c;
+  /* border: 3px solid green; */
+    display: inline-block;
+    margin-top: 1px;
+
+}
+.twofa-divider-text {
+  position: relative;
+  /* background: white; */
+  padding: 0 8px;
+  color: #003c9c;
+  font-size: 14px;
+
+}
+
+.twofa-resend-section {
+  text-align: center;
+}
+
+.twofa-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #003c9c;
+  font-size: 14px;
+  gap: 6px;
+}
+
+.twofa-timer-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.twofa-timer-value {
+  color: #003385;
+  font-weight: 600;
+}
+
+.twofa-resend-btn {
+  margin-top: 12px !important;
+  padding: 8px 12px;
+  font-size: 14px;
+     background-color: #ffffff84 !important;
+
+  border-radius: 10px !important;
+  border: none;
+  /* cursor: pointer; */
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+    color: #003c9c !important;
+     text-transform: none !important;
+
+}
+
+/* .twofa-resend-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.twofa-resend-btn:hover:not(:disabled) {
+  background: #ddd;
+  transform: scale(0.97);
+} */
+
+.twofa-resend-icon {
+  width: 16px;
+  height: 26px;
+  transition: all 0.3s ease-in-out;
+  /* border: 3px solid green; */
+      /* transform: rotate(180deg) !important; */
+
+}
+.twofa-resend-btn:hover .twofa-resend-icon  {
+    transform: rotate(180deg) !important;
+}
+.twofa-resend-btn:hover   {
+    box-shadow: 0px 2px 5px #0b2a5d;
+
+}
+/* .twofa-resend-btn .twofa-resend-icon:hover {
+  width: 16px;
+  height: 26px;
+  border: 3px solid green;
+} */
+/* .twofa-resend-icon .twofa-resend-icon:hover .twofa-resend-icon .twofa-resend-icon {
+  transform: rotate(180deg) !important;
+} */

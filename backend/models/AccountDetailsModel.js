@@ -1,12 +1,20 @@
 import mongoose from 'mongoose';
 
 const AccountDetailsSchema = new mongoose.Schema({
-  email: String,
+  userId: String,
   credentials: [
     {
-      website: { type: String },
-      password: { type: String },  
-      iv: { type: String }        
+      category: { type: String },
+
+      websites: [
+        {
+          name: String,
+          password: String,
+          iv: String     
+        }
+      ],
+
+      createdAt: { type: Date, default: Date.now }
     }
   ],
 });
