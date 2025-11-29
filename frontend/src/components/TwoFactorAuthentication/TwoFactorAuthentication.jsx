@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import "./TwoFactorAuthentication.css";
 import { useNavigate } from 'react-router-dom';
 import { Button, Box } from '@mui/material';
+import { useSnackbar } from 'notistack';
+
 
 
 const TwoFactorAuthentication= () => {
@@ -10,6 +12,8 @@ const TwoFactorAuthentication= () => {
   const inputRefs = useRef([]);
   const [code, setCode] = useState(["", "", "", "", "", ""]);
   const navigate = useNavigate();
+      const { enqueueSnackbar } = useSnackbar();
+  
 
   // Simulate sending code
   const handleSend = () => {
@@ -24,7 +28,8 @@ const TwoFactorAuthentication= () => {
       navigate('/home-page');
     window.location.reload();
     } else {
-      console.log(" wrong");
+        enqueueSnackbar('That doesn’t seem correct. Want to try again?', { variant: 'error' });
+
     }
   };
 
