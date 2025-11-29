@@ -158,8 +158,12 @@ console.log('response.data.userName',response.data.userName)
           <button className="switch-btn" onClick={() => setShowRegister(true)}>
             Register
           </button>
-          
         </div>
+        <Button type="button" className="twofa-resend-btn" onClick={() => setShow2fa(true)}>
+<span class="material-symbols-outlined">id_card</span>
+                      Enter as a guest
+                    </Button>
+        
          {serverLoading && (
           <div className='server-status'>
             <p>Waking up the server, please wait...</p>

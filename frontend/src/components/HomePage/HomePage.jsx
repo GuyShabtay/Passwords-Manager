@@ -19,17 +19,7 @@ const HomePage = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [email, setEmail] = useState(sessionStorage.getItem('email'));
 
-  const fetchCredentialsList = async () => {
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/credentials/${email}`
-      );
-      const credentialsData = response.data;
-      setCredentialsList(credentialsData);
-    } catch (error) {
-      enqueueSnackbar('Error fetching credentials', { variant: 'error' });
-    }
-  };
+  
 
   const handleAddCredentials = async () => {
     navigate('/add-credentials');
@@ -37,18 +27,9 @@ const HomePage = () => {
 
   return (
     <div id='home-page'>
-      <div id='credentials-list'>
-      <AddToPhotosIcon id='add-credentials-icon' onClick={handleAddCredentials} />
-        <div className='credentials-container'>
-          {credentialsList.length > 0 &&
-            credentialsList.map((credentials) => (
-              <Credentials key={credentials._id} credentials={credentials} />
-            ))}
-        </div>
-
-      </div>
+      
       <TabsSwitcher1 />
-       <Button className="submit-btn" type="submit">
+       <Button className="submit-btn" onClick={handleAddCredentials}>
                     <span ><AddRoundedIcon className='add-icon'/></span>
                   </Button>
 
