@@ -299,4 +299,11 @@ router.get('/wakeup', (req, res) => {
   res.send('Server is awake!');
 });
 
+// router.get('/wakeup', (req, res) => {
+//   setTimeout(() => {
+//     res.send('Server is awake!');
+//   }, 5000); // 5 seconds
+// });
+
+
 export default router;

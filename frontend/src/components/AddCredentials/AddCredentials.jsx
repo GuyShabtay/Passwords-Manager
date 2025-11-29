@@ -94,9 +94,9 @@ await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/credentials/${userId}`
 
   return (
     <div id="add-credentials">
-      <button className="btn-primary btn-back" onClick={() => navigate(-1)}>
+      <Button type="button" className="back-btn" onClick={() => navigate(-1)}>
         <KeyboardBackspaceIcon />
-      </button>
+                          </Button>
       <h1>Add Credentials</h1>
     <div id="login-container" >
       <div id="login-box">

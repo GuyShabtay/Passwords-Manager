@@ -33,23 +33,7 @@ import TwoFactorAuthentication from '../TwoFactorAuthentication/TwoFactorAuthent
 
   const navigate = useNavigate();
 
-   useEffect(() => {
-    sessionStorage.clear();
-
-    // Wake up server
-    const wakeUpServer = async () => {
-      try {
-        // await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/wakeup`); 
-        // enqueueSnackbar('Server is awake!', { variant: 'success' });
-      } catch (err) {
-        enqueueSnackbar('Failed to wake up server', { variant: 'error' });
-      } finally {
-        setServerLoading(false);
-      }
-    };
-
-    wakeUpServer();
-  }, []);
+  
 
 
 const handleSubmit = async (e) => {
@@ -164,12 +148,7 @@ console.log('response.data.userName',response.data.userName)
                       Enter as a guest
                     </Button>
         
-         {serverLoading && (
-          <div className='server-status'>
-            <p>Waking up the server, please wait...</p>
-            <div className="loader"></div>
-          </div>
-        )}
+       
         
         </div>
        <img id="lock" src={lock} alt="" />

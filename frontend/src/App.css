@@ -34,16 +34,14 @@
   transform: translateY(-1px);
   cursor: pointer;
 }
-.btn-back {
-  margin: 10px 0 10px 10px;
-  padding: 2px 12px 0 12px;
-  text-align: center;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
+.back-btn {
   align-self: flex-start;
-  justify-self: flex-start;
-  margin-top: 90px;
+  margin: 100px 0 0 20px !important;
+  padding: 8px 12px;
+  font-size: 14px;
+     background-color: #ffffff84 !important;
+  border-radius: 10px !important;
+    color: #003c9c !important;
 }
 h1{
   margin-bottom: 10px;

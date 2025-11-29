@@ -73,12 +73,12 @@ margin-left: 5px;
   }
 } */
 .loader {
-      margin-top: 50px;
+      margin-top: 10px;
   width: 50px;
   padding: 8px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: purple;
+  background: #004fcf;
   --_m: 
     conic-gradient(#0000 10%,#000),
     linear-gradient(#000 0 0) content-box;

@@ -4,6 +4,10 @@ import Register from "../Register1/Register";
 import "./Auth.css";
 import PasswordRoundedIcon from '@mui/icons-material/PasswordRounded';
 import logo from '../../assets/images/logo.png';
+import { useSnackbar } from 'notistack';
+import axios from 'axios';
+
+
 
 
 
@@ -11,6 +15,27 @@ const Auth = () => {
   const [showRegister, setShowRegister] = useState(false);
   const [shouldRenderRegister, setShouldRenderRegister] = useState(false);
   const [shouldRenderLogin, setShouldRenderLogin] = useState(true);
+      const [serverLoading, setServerLoading] = useState(true);
+          const { enqueueSnackbar } = useSnackbar();
+      
+  
+ useEffect(() => {
+    sessionStorage.clear();
+
+    // Wake up server
+    const wakeUpServer = async () => {
+      try {
+        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/wakeup`); 
+        enqueueSnackbar('Server is awake!', { variant: 'success' });
+      } catch (err) {
+        enqueueSnackbar('Failed to wake up server', { variant: 'error' });
+      } finally {
+        setServerLoading(false);
+      }
+    };
+
+    wakeUpServer();
+  }, []);
 
   // Handle Register box
   useEffect(() => {
@@ -68,6 +93,12 @@ const Auth = () => {
           <Register setShowRegister={setShowRegister} />
         )}
       </div>
+        {serverLoading && (
+                <div className='server-status one-line'>
+                  <p>Waking up the server, please wait...</p>
+                  <div className="loader"></div>
+                </div>
+              )}
     </div>
   );
 };

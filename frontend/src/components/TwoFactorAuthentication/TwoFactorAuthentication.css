@@ -218,17 +218,6 @@
      text-transform: none !important;
 
 }
-
-/* .twofa-resend-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.twofa-resend-btn:hover:not(:disabled) {
-  background: #ddd;
-  transform: scale(0.97);
-} */
-
 .twofa-resend-icon {
   width: 16px;
   height: 26px;
