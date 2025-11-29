@@ -41,7 +41,8 @@
   gap: 32px;
   flex-direction: column;
   max-height: 400px;
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden !important;
       /* padding:0 20px 0 20px ; */
       padding: 32px;
   
@@ -60,6 +61,7 @@
   display: flex;
   flex-direction: column;
   gap: 48px;
+  
 }
 
 .section-item {
@@ -101,7 +103,7 @@
 .stocks-panel {
   width: 100%;
   max-width: 67%;
-  overflow-x: auto;
+  /* overflow-x: auto; */
 }
 
 .stocks-header {
@@ -192,21 +194,17 @@ align-items:flex-end;
 }
 
 .tabs-wrapper .userIcon {
-  position: absolute;
-  fill: #004fcf;
   width: 20px;         /* slightly larger than example for readability */
   top: -28px;
   left: -18px;         /* places icon to the left, outside input similar to your example */
-  opacity: 0;
-  transition: .2s linear;
   color: #014baa;
 }
 .tabs-wrapper .input-container {
   margin: 20px 0 0 0 ;
 }
-.search-icon{
+/* .search-icon{
   font-size: 70px !important;
-}
+} */
 .search-box {
   position: relative;
   width: 100%;

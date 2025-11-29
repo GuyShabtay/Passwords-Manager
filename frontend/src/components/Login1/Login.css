@@ -158,8 +158,8 @@ margin: 10px 0;
 .password-label {
   position: absolute;
   top: -25px;
-  left: 0px; 
-  color: gray;
+  left: 5px; 
+  /* color: black; */
   font-size: 14px;
   font-weight: 600;
   overflow: hidden;
@@ -392,7 +392,7 @@ margin: 10px 0;
   position: absolute;
   top: -25px;
   left: 5px;
-  color: gray;
+  /* color: gray; */
   font-size: 14px;
   font-weight: 600;
   overflow: hidden;

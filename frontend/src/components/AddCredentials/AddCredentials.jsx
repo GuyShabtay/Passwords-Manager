@@ -19,6 +19,9 @@ import submitIcon from '../../assets/images/login.png';
  import Lottie from "lottie-react";
 import addAnimation from "../../assets/animations/add.json";
 import deleteAnimation from "../../assets/animations/delete.json";
+import LanguageIcon from '@mui/icons-material/Language';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+
 
 
 
@@ -26,6 +29,8 @@ const AddCredentials = () => {
   const createLottieRef = () => React.createRef();
 
   const [category, setCategory] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+  
 const [websites, setWebsites] = useState([
   { name: "", password: "", addRef: createLottieRef(), deleteRef: createLottieRef() }
 ]);
@@ -135,6 +140,13 @@ await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/credentials/${userId}`
           onChange={(e) => handleWebsiteChange(index, "name", e.target.value)}
         />
         <label className="usernameLabel">Website name</label>
+        
+        <svg viewBox="0 0 500 512" className="userIcon website-icon" aria-hidden>
+         <LanguageIcon />
+                      </svg>
+                   
+
+       
       </div>
 
       {/* Password */}
@@ -142,13 +154,24 @@ await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/credentials/${userId}`
         <input
           required
           className="input"
+          id="password-field"
           type="password"
           placeholder="Password"
           value={item.password}
           onChange={(e) => handleWebsiteChange(index, "password", e.target.value)}
         />
-        <label className="password-label">Password</label>
+        <label className="password-label" htmlFor="password-field">Password</label>
+
+              <svg viewBox="0 0 448 512" className="password-icon" aria-hidden>
+                <path d="M400 192h-24v-72C376 53.8 322.2 0 256 0S136 53.8 136 120v72H112c-26.5 0-48 21.5-48 48v224c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V240c0-26.5-21.5-48-48-48zM184 120c0-39.8 32.2-72 72-72s72 32.2 72 72v72H184V120z"/>
+              </svg>
+
+              <div onClick={() => setShowPassword(!showPassword)} className="eye-box">
+                <VisibilityIcon className={`eye-icon ${showPassword ? 'visible' : 'hidden'}`} />
+                <VisibilityOffIcon className={`eye-slash-icon ${showPassword ? 'hidden' : 'visible'}`} />
+              </div>
       </div>
+     
 
       {/* Add / Remove buttons */}
       <div className="website-buttons">
