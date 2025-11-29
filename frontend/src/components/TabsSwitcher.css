@@ -8,10 +8,11 @@
   border: 1px solid #e5e5e5;
   margin-top: 150px;
 }
-
 .tabs-container {
-  padding: 32px;
+  /* padding: 32px; */
   padding-bottom: 16px;
+      
+
 }
 
 .tabs-title {
@@ -21,6 +22,8 @@
 }
 .sticky-header{
   /* border: 3px solid green; */
+  /* padding: 32px; */
+  padding: 32px 42px 0 42px;
 
 }
 .tabs-title-box{
@@ -37,6 +40,11 @@
   display: flex;
   gap: 32px;
   flex-direction: column;
+  max-height: 400px;
+      overflow: auto;
+      /* padding:0 20px 0 20px ; */
+      padding: 32px;
+  
 }
 
 @media (min-width: 1024px) {

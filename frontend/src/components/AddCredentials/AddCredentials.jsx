@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useRef  } from 'react';
 import './AddCredentials.css';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useNavigate } from 'react-router-dom';
@@ -16,21 +16,31 @@ import submitIcon from '../../assets/images/login.png';
  import '../Login1/Login.css'
  import lock from '../../assets/images/pc.jpg';
  import '../Login1/Login.css'
+ import Lottie from "lottie-react";
+import addAnimation from "../../assets/animations/add.json";
+import deleteAnimation from "../../assets/animations/delete.json";
 
 
 
 const AddCredentials = () => {
+  const createLottieRef = () => React.createRef();
+
   const [category, setCategory] = useState('');
-  const [websites, setWebsites] = useState([{ name: '', password: '' }]);
+const [websites, setWebsites] = useState([
+  { name: "", password: "", addRef: createLottieRef(), deleteRef: createLottieRef() }
+]);
   const [loading, setLoading] = useState(false);
-   const [websiteName, setWebsiteName] = useState('');
-    const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
+
 
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
-  const addWebsiteField = () => setWebsites([...websites, { name: '', password: '' }]);
+const addWebsiteField = () => {
+  setWebsites([
+    ...websites,
+    { name: "", password: "", addRef: createLottieRef(), deleteRef: createLottieRef() }
+  ]);
+};
   const removeWebsiteField = (index) => {
     setWebsites(websites.filter((_, i) => i !== index));
   };
@@ -60,10 +70,13 @@ const AddCredentials = () => {
   }
 
   try {
-    await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/credentials/${userId}`, {
-      category,
-      websites, // array of { name, password }
-    });
+    console.log('websites',websites)
+   const payloadWebsites = websites.map(({ name, password }) => ({ name, password }));
+
+await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/credentials/${userId}`, {
+  category,
+  websites: payloadWebsites,
+});
     enqueueSnackbar('Credentials added successfully', { variant: 'success' });
     navigate(-1);
   } catch (error) {
@@ -79,19 +92,13 @@ const AddCredentials = () => {
       <button className="btn-primary btn-back" onClick={() => navigate(-1)}>
         <KeyboardBackspaceIcon />
       </button>
-
-     
+      <h1>Add Credentials</h1>
     <div id="login-container" >
-
       <div id="login-box">
-              
-      
               <img id="login-icon" src={loginIcon} alt="" />
-      
               {/* make the box LTR */}
               <Box dir="ltr">
                 <form onSubmit={handleSubmit} className="form-box">
-      
                   {/* USERNAME INPUT - uses left-side person icon */}
                   <div className="input-container username">
                     <input
@@ -145,38 +152,58 @@ const AddCredentials = () => {
 
       {/* Add / Remove buttons */}
       <div className="website-buttons">
-        <button
-          type="button"
-          className="add-btn"
-          onClick={addWebsiteField}
-        >
-          +
-        </button>
 
-        {websites.length > 1 && (
-          <button
-            type="button"
-            className="remove-btn"
-            onClick={() => removeWebsiteField(index)}
-          >
-            -
-          </button>
-        )}
+         <button
+  style={{ background: "transparent", border: "none", cursor: "pointer" }}
+  onClick={addWebsiteField}
+  onMouseEnter={() => item.addRef.current.play()}
+  onMouseLeave={() => item.addRef.current.stop()}
+>
+  <Lottie
+    lottieRef={item.addRef}
+    animationData={addAnimation}
+    loop={false}
+    autoplay={false}
+    style={{ width: 50, height: 50 }}
+  />
+</button>
+
+{/* DELETE BUTTON — always visible */}
+<button
+  disabled={websites.length === 1}              // disable if only one row
+  onClick={() => removeWebsiteField(index)}
+  onMouseEnter={() => {
+    if (websites.length > 1) item.deleteRef.current.play();
+  }}
+  onMouseLeave={() => {
+    if (websites.length > 1) item.deleteRef.current.stop();
+  }}
+  style={{
+    background: "transparent",
+    border: "none",
+    cursor: websites.length === 1 ? "not-allowed" : "pointer",
+    opacity: websites.length === 1 ? 0.3 : 1,   // gray out
+  }}
+>
+  <Lottie
+    lottieRef={item.deleteRef}
+    animationData={deleteAnimation}
+    loop={false}
+    autoplay={false}
+    style={{ width: 50, height: 50 }}
+  />
+</button>
+
       </div>
-
     </div>
   ))}
 </div>
-
-
-      
                   <Button className="submit-btn" type="submit">
                     <span className="btn-text">Submit</span>
                     <img id="submit-icon" src={submitIcon} alt="icon" />
                   </Button>
                 </form>
               </Box>
-               
               </div>
               <img id="lock" src={lock} alt="" />
               </div>

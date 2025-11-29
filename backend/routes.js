@@ -108,8 +108,10 @@ router.post('/login', async (req, res) => {
 //
 // Add credentials
 router.post('/credentials/:userId', async (req, res) => {
+
   const { userId } = req.params;
   const { category, websites } = req.body;
+      console.log('websites',websites)
 
   if (!category || !websites || !websites.length || websites.some(w => !w.name || !w.password)) {
     return res.status(400).json({ error: 'Missing fields' });
