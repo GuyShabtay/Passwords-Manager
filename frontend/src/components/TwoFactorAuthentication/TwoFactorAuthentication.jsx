@@ -3,6 +3,8 @@ import "./TwoFactorAuthentication.css";
 import { useNavigate } from 'react-router-dom';
 import { Button, Box } from '@mui/material';
 import { useSnackbar } from 'notistack';
+import axios from 'axios';
+
 
 
 
@@ -21,17 +23,41 @@ const TwoFactorAuthentication= () => {
   };
 
   // Verify code
-  const verifyCode = (enteredCode) => {
-    console.log(" Verifying code →", enteredCode);
-    if (enteredCode === "123456") {
-      console.log(" correct");
-      navigate('/home-page');
-    window.location.reload();
-    } else {
-        enqueueSnackbar('That doesn’t seem correct. Want to try again?', { variant: 'error' });
+ const verifyCode = async (enteredCode) => {
+  try {
+    if (enteredCode === '123456') {
+      // Guest login credentials
+      const guestResponse = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/login-without-2fa`,
+        { userName: 'Guest User', password: '123456' }
+      );
 
+      sessionStorage.setItem('token', guestResponse.data.token);
+      sessionStorage.setItem('userName', guestResponse.data.userName);
+      sessionStorage.setItem('userId', guestResponse.data.userId);
+
+      navigate('/home-page');
+      window.location.reload();
+      console.log('here')
+      return; // Exit function
     }
-  };
+
+    const userId = sessionStorage.getItem("userId");
+    const response = await axios.post(
+      `${import.meta.env.VITE_BACKEND_URL}/api/verify-otp`,
+      { userId, otp: enteredCode }
+    );
+
+    sessionStorage.setItem('token', response.data.token);
+    sessionStorage.setItem('userName', response.data.userName);
+
+    navigate('/home-page');
+    window.location.reload();
+  } catch (err) {
+    enqueueSnackbar(err.response?.data?.error || 'Invalid OTP', { variant: 'error' });
+  }
+};
+
 
   // Handle timer end or manual resend
   const handleTimerFinished = () => {

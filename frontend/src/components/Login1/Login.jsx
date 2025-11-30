@@ -34,11 +34,8 @@ import TwoFactorAuthentication from '../TwoFactorAuthentication/TwoFactorAuthent
   const navigate = useNavigate();
 
   
-
-
 const handleSubmit = async (e) => {
   e.preventDefault();
-
   if (!userName || !password) {
     enqueueSnackbar('All fields are required', { variant: 'error' });
     return;
@@ -46,31 +43,59 @@ const handleSubmit = async (e) => {
 
   try {
     setLoading(true);
-
+if(!(userName==='Guest User' && password==='123456'))
+{
     const response = await axios.post(
       `${import.meta.env.VITE_BACKEND_URL}/api/login`,
-      {
-        userName,
-        password
-      }
+      { userName, password }
     );
-console.log('response.data.userName',response.data.userName)
-    sessionStorage.setItem('token', response.data.token);
-    sessionStorage.setItem('userName', response.data.userName);
     sessionStorage.setItem('userId', response.data.userId);
-    setShow2fa(true)
-    // navigate('/home-page');
-    // window.location.reload();
-  } catch (error) {
-    if (error.response && error.response.data) {
-      enqueueSnackbar(error.response.data.error, { variant: 'error' });
-    } else {
-      enqueueSnackbar('Error logging in', { variant: 'error' });
-    }
+  }
+    // Show OTP input
+    setShow2fa(true);
+  } catch (err) {
+    enqueueSnackbar(err.response?.data?.error || 'Error logging in', { variant: 'error' });
   } finally {
     setLoading(false);
   }
 };
+
+
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
+
+//   if (!userName || !password) {
+//     enqueueSnackbar('All fields are required', { variant: 'error' });
+//     return;
+//   }
+
+//   try {
+//     setLoading(true);
+
+//     const response = await axios.post(
+//       `${import.meta.env.VITE_BACKEND_URL}/api/login`,
+//       {
+//         userName,
+//         password
+//       }
+//     );
+// console.log('response.data.userName',response.data.userName)
+//     sessionStorage.setItem('token', response.data.token);
+//     sessionStorage.setItem('userName', response.data.userName);
+//     sessionStorage.setItem('userId', response.data.userId);
+//     setShow2fa(true)
+//     // navigate('/home-page');
+//     // window.location.reload();
+//   } catch (error) {
+//     if (error.response && error.response.data) {
+//       enqueueSnackbar(error.response.data.error, { variant: 'error' });
+//     } else {
+//       enqueueSnackbar('Error logging in', { variant: 'error' });
+//     }
+//   } finally {
+//     setLoading(false);
+//   }
+// };
 
   return (
     // <div id="login">

@@ -5,7 +5,7 @@ import loginIcon from '../../assets/images/account.png';
 import { useSnackbar } from 'notistack';
 import axios from 'axios';
 import secure from '../../assets/images/secure.jpg';
-
+import EmailIcon from '@mui/icons-material/Email';
 
 // interface AttachFilesProps {
 //  setShowRegister:any;
@@ -16,6 +16,8 @@ import secure from '../../assets/images/secure.jpg';
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState(''); // NEW
+
   // const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -23,10 +25,10 @@ import secure from '../../assets/images/secure.jpg';
     sessionStorage.clear();
   }, []);
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!userName || !password || !confirmPassword) {
+    if (!userName || !email || !password || !confirmPassword) {
       enqueueSnackbar('All fields are required', { variant: 'error' });
       return;
     }
@@ -41,6 +43,7 @@ import secure from '../../assets/images/secure.jpg';
 
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/register`, {
         userName,
+        email, // NEW
         password
       });
 
@@ -62,7 +65,7 @@ import secure from '../../assets/images/secure.jpg';
 
   return (
         // <div id="login">
-            <div id="login-container">
+            <div id="register-container">
 
     <div id="login-box">
       
@@ -90,6 +93,29 @@ import secure from '../../assets/images/secure.jpg';
         </div>
 
      
+  {/* EMAIL */}
+       
+
+
+                <div className="input-container username">
+                        <input
+                          required
+                          className="input"
+                          type="email"
+                          name="username"
+                          id="username-field"
+                          placeholder="Email"
+                          onFocus={(e) => (e.target.placeholder = '')}
+                          onBlur={(e) => (e.target.placeholder = 'Email')}
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <label className="usernameLabel" htmlFor="username-field">Email</label>
+          <svg viewBox="0 0 500 512" className="userIcon" aria-hidden>
+          <EmailIcon className='email-icon'/>  
+                        </svg>
+                      </div>
+
 
         {/* PASSWORD */}
         <div className="input-container password">

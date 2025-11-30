@@ -5,9 +5,9 @@ import { User } from './models/UserModel.js';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
 import argon2 from 'argon2';
+import {transporter} from './emailTransporter.js'
 
 dotenv.config();
-
 const router = express.Router();
 
 const algorithm = 'aes-256-cbc';
@@ -40,7 +40,7 @@ const decrypt = (encryptedText, ivHex) => {
 // REGISTER USER (NO EMAIL)
 //
 router.post('/register', async (req, res) => {
-  const { userName, password } = req.body;
+  const { userName, password,email } = req.body;
 
   try {
     // Only username must be unique now
@@ -54,6 +54,7 @@ router.post('/register', async (req, res) => {
     const newUser = new User({
       userName,
       password: hashedPassword,
+      email
     });
 
     await newUser.save();
@@ -77,7 +78,7 @@ router.post('/register', async (req, res) => {
 //
 // LOGIN USER (NO EMAIL)
 //
-router.post('/login', async (req, res) => {
+router.post('/login-without-2fa', async (req, res) => {
   const { userName, password } = req.body;
 
   try {
@@ -96,6 +97,43 @@ router.post('/login', async (req, res) => {
       userId: user._id,
       userName: user.userName,
     });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+
+router.post('/login', async (req, res) => {
+  const { userName, password } = req.body;
+
+  try {
+    const user = await User.findOne({ userName });
+    if (!user) return res.status(400).json({ error: 'Invalid username or password' });
+
+    const valid = await argon2.verify(user.password, password);
+    if (!valid) return res.status(400).json({ error: 'Invalid username or password' });
+
+    // Generate 6-digit OTP
+    const otp = (Math.floor(100000 + Math.random() * 900000)).toString();
+    user.otp = otp;
+    user.otpExpires = Date.now() + 5 * 60 * 1000; // 5 min
+    await user.save();
+console.log('user.email',user.email)
+    // Send OTP email
+    await transporter.sendMail({
+      to: user.email,
+      subject: "Your Login OTP",
+      text: `Your OTP code is: ${otp}`,
+    });
+//     await transporter.sendMail({
+//   from: "no-reply@guy1179@gmail.com",
+//   to: user.email,
+//   subject: "Your OTP Code",
+//   html: `<h1>${otp}</h1>`
+// });
+
+
+    res.json({ msg: "OTP sent to your email", userId: user._id });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');
@@ -289,6 +327,34 @@ router.delete('/credentials/:userId/:credId', async (req, res) => {
   }
 });
 
+
+
+router.post('/verify-otp', async (req, res) => {
+  const { userId, otp } = req.body;
+console.log('otp',otp,userId)
+  try {
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ error: "User not found" });
+
+    if (!user.otp || user.otpExpires < Date.now())
+      return res.status(400).json({ error: "OTP expired" });
+
+    if (user.otp !== otp) return res.status(400).json({ error: "Invalid OTP" });
+
+    // Clear OTP
+    user.otp = undefined;
+    user.otpExpires = undefined;
+    await user.save();
+
+    // Generate JWT after OTP verification
+    const token = jwt.sign({ id: user._id }, process.env.TOKEN_KEY, { expiresIn: '1h' });
+
+    res.json({ token, userId: user._id, userName: user.userName });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
 
 
 
