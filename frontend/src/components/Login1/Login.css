@@ -80,7 +80,7 @@ background: url(../../assets//images/b.jpg) no-repeat center center/cover !impor
   border-radius: 20px;
   z-index: 9999;
   position: relative;
-  display: flex;
+  display: flex; 
   align-items: center;
   overflow: hidden;
     box-shadow: #0b2a5d 0px 30px 30px -20px;

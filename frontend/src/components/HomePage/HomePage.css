@@ -12,7 +12,7 @@
 }
 #main-background{
   position: fixed;
-  background: url(/src/assets/images/blue.jpg) no-repeat center center/cover;;
+  background: url(/src/assets/images/blue.avif) no-repeat center center/cover;;
   width: 100%;
   height: 100vh;
   z-index: -1;
