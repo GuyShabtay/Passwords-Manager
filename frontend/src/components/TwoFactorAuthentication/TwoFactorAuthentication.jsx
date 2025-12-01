@@ -143,10 +143,18 @@ const TwoFactorAuthentication= () => {
 
         <div className="twofa-header">
           <p className="twofa-title">Verification Required</p>
+           <p className="twofa-subtitle">Enter the 6-digit code sent to your email</p>
+            <p className="twofa-email">{sessionStorage.getItem('email')}</p>
+          <div className="twofa-divider one-line">
+            <span className="twofa-divider-line"></span>
+            <span className="twofa-divider-text">or</span>
+            <span className="twofa-divider-line"></span>
+          </div>
           <div className="one-line">
-            <p className="twofa-subtitle">As a guest use:</p>
+            <p className="twofa-subtitle">As a guest enter</p>
             <p className="twofa-email">123456</p>
           </div>
+           
         </div>
 
         <form className="twofa-form" onSubmit={(e) => { e.preventDefault(); verifyCode(code.join("")); }}>
@@ -184,11 +192,7 @@ const TwoFactorAuthentication= () => {
             </span>
           </button>
 
-          <div className="twofa-divider one-line">
-            <span className="twofa-divider-line"></span>
-            <span className="twofa-divider-text">or</span>
-            <span className="twofa-divider-line"></span>
-          </div>
+         
 
           <div className="twofa-resend-section">
             <div className="twofa-timer">

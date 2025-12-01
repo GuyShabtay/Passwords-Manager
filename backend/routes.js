@@ -133,7 +133,7 @@ console.log('user.email',user.email)
 // });
 
 
-    res.json({ msg: "OTP sent to your email", userId: user._id });
+    res.json({ msg: "OTP sent to your email", userId: user._id,email:user.email });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');

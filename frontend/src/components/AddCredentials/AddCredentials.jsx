@@ -144,9 +144,6 @@ await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/credentials/${userId}`
         <svg viewBox="0 0 500 512" className="userIcon website-icon" aria-hidden>
          <LanguageIcon />
                       </svg>
-                   
-
-       
       </div>
 
       {/* Password */}
@@ -155,7 +152,7 @@ await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/credentials/${userId}`
           required
           className="input"
           id="password-field"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           placeholder="Password"
           value={item.password}
           onChange={(e) => handleWebsiteChange(index, "password", e.target.value)}

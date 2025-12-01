@@ -103,10 +103,12 @@ width: fit-content !important;
 
 
 }
-#login-container:hover{
- scale: 1.04;
-     box-shadow: #0b2a5d 0px 20px 30px -20px;
+#login-container:hover,
+#login-container:focus-within {
+  scale: 1.04;
+  box-shadow: #0b2a5d 0px 20px 30px -20px;
 }
+
 
 .form-box{
    display: flex;

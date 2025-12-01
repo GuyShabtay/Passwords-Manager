@@ -50,6 +50,8 @@ if(!(userName==='Guest User' && password==='123456'))
       { userName, password }
     );
     sessionStorage.setItem('userId', response.data.userId);
+    sessionStorage.setItem('email', response.data.email);
+    enqueueSnackbar(`A verification code has been sent`, { variant: 'success' });
   }
     // Show OTP input
     setShow2fa(true);
