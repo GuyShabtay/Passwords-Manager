@@ -1,15 +1,4 @@
-.twofa-container {
-  /* width: 400px !important;
-  height: 200px;
-  min-width: 420px; */
-  /* position: fixed;
-  z-index: 10; */
-}
-
 .twofa-card {
-  /* background: white; */
-    /* background: rgba(255, 255, 255, 0.342); */
-
   border-radius: 20px 0 0 20px;
   padding: 32px;
   border: 1px solid #eee;
@@ -29,7 +18,6 @@
 .twofa-icon-wrapper {
   width: 64px;
   height: 64px;
-  /* background: #04113e; */
     background: linear-gradient(to bottom, #0078fd, rgba(11, 7, 61, 1));
 
   border-radius: 16px;
@@ -39,10 +27,6 @@
   justify-content: center;
   transition: 0.3s;
 }
-
-/* .twofa-icon-wrapper:hover {
-  transform: scale(1.1) rotate(12deg);
-} */
 
 .twofa-icon {
   width: 32px;
@@ -112,7 +96,6 @@
 .twofa-submit {
   width: 100%;
   padding: 14px;
-  /* background: linear-gradient(to right, #111, #444); */
   background: linear-gradient(to left, #0078fd, rgba(11, 7, 61, 1));
   margin-bottom: 20px;
 
@@ -152,11 +135,6 @@
 
 .twofa-divider {
       text-align: center ;
-        /* width: 500px !important; */
-          /* border: 3px solid green; */
-
-
-
 }
 
 
@@ -165,14 +143,12 @@
   width: 150px;
   height: 0.5px;
   background-color: #003c9c;
-  /* border: 3px solid green; */
     display: inline-block;
     margin-top: 1px;
 
 }
 .twofa-divider-text {
   position: relative;
-  /* background: white; */
   padding: 0 8px;
   color: #003c9c;
   font-size: 14px;
@@ -210,7 +186,6 @@
 
   border-radius: 10px !important;
   border: none;
-  /* cursor: pointer; */
   transition: 0.3s;
   display: inline-flex;
   align-items: center;
@@ -223,9 +198,6 @@
   width: 16px;
   height: 26px;
   transition: all 0.3s ease-in-out;
-  /* border: 3px solid green; */
-      /* transform: rotate(180deg) !important; */
-
 }
 .twofa-resend-btn:hover .twofa-resend-icon  {
     transform: rotate(180deg) !important;
@@ -238,11 +210,4 @@
   margin: 10px 0;
 
 }
-/* .twofa-resend-btn .twofa-resend-icon:hover {
-  width: 16px;
-  height: 26px;
-  border: 3px solid green;
-} */
-/* .twofa-resend-icon .twofa-resend-icon:hover .twofa-resend-icon .twofa-resend-icon {
-  transform: rotate(180deg) !important;
-} */
+

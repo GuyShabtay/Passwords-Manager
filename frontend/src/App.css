@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   width: 100%;
   height: 100vh;
 }
@@ -46,141 +45,8 @@
 h1{
   margin-bottom: 10px;
 }
-/* label{
-  display: block;
-} */
-/* input{
-  border-radius: 5px;
-  border:none;
-} */
 
 
 
 
-
-
-
-
-
-/* 
-
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: "Rubik", sans-serif;
-  color: white;
-}
-
-#app {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  background-color: #1e1e1e;
-}
-
-#app-background {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-}
-
-#app-background-image {
-  width: 100%;
-  height: 100%;
-  background-image: url("https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=2076&q=80");
-  background-size: cover;
-  background-position: center;
-  transition: filter 0.25s, transform 0.25s;
-}
-
-#app.logging-in #app-background-image {
-  filter: blur(8px);
-  transform: scale(1.2);
-}
-
-#app-pin-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
-  pointer-events: all;
-  text-align: center;
-}
-
-#app-pin {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.app-pin-digit {
-  width: 50px;
-  height: 50px;
-  background-color: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5em;
-  transition: all 0.2s;
-}
-
-.app-pin-digit.focused {
-  border-color: #42fc98;
-}
-
-.app-pin-digit.popped {
-  animation: pop 0.5s forwards;
-}
-
-@keyframes pop {
-  0% { transform: scale(0); opacity: 0; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); opacity: 0; }
-}
-
-.app-pin-digit-value {
-  display: inline-block;
-}
-
-#app-pin-label {
-  margin-top: 10px;
-  font-size: 1em;
-}
-
-#app-pin-error-text {
-  color: #ef5350;
-  margin-left: 10px;
-}
-
-#app-pin-cancel-text {
-  cursor: pointer;
-  margin-left: 15px;
-  color: #ffffffa0;
-}
-
-#show-pin-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px 25px;
-  border-radius: 50px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background-color: rgba(255,255,255,0.1);
-  color: white;
-  cursor: pointer;
-}
-
-#show-pin-button:hover {
-  background-color: rgba(255,255,255,0.2);
-}
- */
 

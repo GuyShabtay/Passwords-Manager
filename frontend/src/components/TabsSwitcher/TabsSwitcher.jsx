@@ -2,7 +2,7 @@ import React, { useState, useEffect,useRef } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import "./TabsSwitcher.css";
-import secure from '../assets/images/sheild1.jpg';
+import secure from '../../assets/images/sheild1.jpg';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
 export default function TabsSwitcher({ accentColor = "#FF6B00" }) {
@@ -98,20 +98,12 @@ const filteredItems =
         const res = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/credentials/${userId}`
         );
-
-        console.log("RAW RESPONSE:", res);
-
         const data = res.data;
-        console.log("DATA:", data);
 
         // Print full details
         Object.entries(data).forEach(([category, creds]) => {
-          console.log("Category:", category);
           creds.forEach((cred) => {
-            console.log("  Credential ID:", cred.id);
             cred.websites.forEach((site) => {
-              console.log("    Website:", site.name);
-              console.log("    Password:", site.password);
             });
           });
         });

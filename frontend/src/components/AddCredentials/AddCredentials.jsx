@@ -13,9 +13,9 @@ import loginIcon from '../../assets/images/form.png';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import submitIcon from '../../assets/images/login.png';
- import '../Login1/Login.css'
+ import '../Login/Login.css'
  import lock from '../../assets/images/pc.jpg';
- import '../Login1/Login.css'
+ import '../Login/Login.css'
  import Lottie from "lottie-react";
 import addAnimation from "../../assets/animations/add.json";
 import deleteAnimation from "../../assets/animations/delete.json";
@@ -67,7 +67,6 @@ const addWebsiteField = () => {
   setLoading(true);
 
   const userId = sessionStorage.getItem('userId');
-  console.log('first,userId',userId)
   if (!userId) {
     enqueueSnackbar('User not logged in', { variant: 'error' });
     setLoading(false);
@@ -75,7 +74,6 @@ const addWebsiteField = () => {
   }
 
   try {
-    console.log('websites',websites)
    const payloadWebsites = websites.map(({ name, password }) => ({ name, password }));
 
 await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/credentials/${userId}`, {
@@ -101,10 +99,8 @@ await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/credentials/${userId}`
     <div id="login-container" >
       <div id="login-box">
               <img id="login-icon" src={loginIcon} alt="" />
-              {/* make the box LTR */}
               <Box dir="ltr">
                 <form onSubmit={handleSubmit} className="form-box">
-                  {/* USERNAME INPUT - uses left-side person icon */}
                   <div className="input-container username">
                     <input
                       required
@@ -188,7 +184,6 @@ await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/credentials/${userId}`
   />
 </button>
 
-{/* DELETE BUTTON — always visible */}
 <button
   disabled={websites.length === 1}              // disable if only one row
   onClick={() => removeWebsiteField(index)}

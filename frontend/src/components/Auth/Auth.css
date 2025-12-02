@@ -1,11 +1,6 @@
-/* Base styles */
 #auth-wrapper {
   height: 100vh;
   width: 100vw;
-  /* border: 3px solid green; */
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   position: relative;
   overflow: hidden;
   
@@ -21,23 +16,18 @@
 
 }
 
-/* LOGIN showing */
 .login-box.fade-right-in {
   opacity: 1;
-  /* transform: translateX(0); */
   pointer-events: auto;
 }
 
-/* LOGIN hiding */
 .login-box.fade-right-out {
   opacity: 0;
   transform: translateX(500px);
 }
 
-/* REGISTER showing */
 .register-box.fade-left-in {
   opacity: 1;
-  /* transform: translateX(0); */
   pointer-events: auto;
 }
 
@@ -52,12 +42,12 @@
 }
 .auth-logo-box.one-line{
     white-space: nowrap;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 .auth-password-logo{
   font-size: 70px !important;
   color: white;
-  margin: 0 10px 10px 0;
+  margin: 0 20px 10px 0;
 }
 .auth-text-logo{
   height: 50px;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './AddCredentials/AddCredentials.css';  
+import '../AddCredentials/AddCredentials.css';  
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import axios from 'axios';
-import loader from '../assets/images/loader.gif';
+import loader from '../../assets/images/loader.gif';
 
 const EditCredentials = () => {
   const location = useLocation();

@@ -17,10 +17,7 @@ const TwoFactorAuthentication= () => {
       const { enqueueSnackbar } = useSnackbar();
   
 
-  // Simulate sending code
-  const handleSend = () => {
-    console.log("📨 Code request sent");
-  };
+ 
 
   // Verify code
  const verifyCode = async (enteredCode) => {
@@ -31,14 +28,11 @@ const TwoFactorAuthentication= () => {
         `${import.meta.env.VITE_BACKEND_URL}/api/login-without-2fa`,
         { userName: 'Guest User', password: '123456' }
       );
-
       sessionStorage.setItem('token', guestResponse.data.token);
       sessionStorage.setItem('userName', guestResponse.data.userName);
       sessionStorage.setItem('userId', guestResponse.data.userId);
-
       navigate('/home-page');
       window.location.reload();
-      console.log('here')
       return; // Exit function
     }
 
@@ -61,7 +55,6 @@ const TwoFactorAuthentication= () => {
 
   // Handle timer end or manual resend
   const handleTimerFinished = () => {
-    handleSend(); // send automatically
     setTimer(40);
     setIsCounting(true);
 

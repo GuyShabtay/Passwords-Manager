@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Login from "../Login1/Login";
-import Register from "../Register1/Register";
+import Login from "../Login/Login";
+import Register from "../Register/Register";
 import "./Auth.css";
 import PasswordRoundedIcon from '@mui/icons-material/PasswordRounded';
 import logo from '../../assets/images/logo.png';
@@ -67,7 +67,6 @@ const Auth = () => {
 
   return (
     <div id="auth-wrapper">
-    
             <div className="auth-logo-box one-line">
               <PasswordRoundedIcon className='auth-password-logo'/>
               <img src={logo} alt='text logo' className='auth-text-logo' />

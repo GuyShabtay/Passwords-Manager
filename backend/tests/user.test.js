@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import { User } from '../models/UserModel.js';
 import { AccountDetails } from '../models/AccountDetailsModel.js';
-import router from '../routes.js'; // Adjust the path accordingly
+import router from '../routes.js'; 
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -12,8 +12,8 @@ const app = express();
 app.use(express.json());
 app.use('/api', router);
 
-const TEST_DB_URI = process.env.MONGODB_URL; // Change this to your test DB URI
-const TOKEN_KEY = process.env.TOKEN_KEY; // Change this to your test token key
+const TEST_DB_URI = process.env.MONGODB_URL; 
+const TOKEN_KEY = process.env.TOKEN_KEY; 
 
 // Setup and teardown for database connection
 beforeAll(async () => {

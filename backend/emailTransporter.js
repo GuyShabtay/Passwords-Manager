@@ -5,18 +5,8 @@ dotenv.config();
 export const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL_USER, // your Gmail
-    pass: process.env.EMAIL_APP_PASSWORD, // Gmail app password
+    user: process.env.EMAIL_USER, 
+    pass: process.env.EMAIL_APP_PASSWORD,
   },
 });
 
-// export const transporter = nodemailer.createTransport({
-//   host: "smtp-relay.brevo.com",
-//   port: 587,
-//   secure: false, // must be false for port 587
-
-//   auth: {
-//     user: process.env.EMAIL_USER,
-//     pass: process.env.EMAIL_PASS,
-//   },
-// });

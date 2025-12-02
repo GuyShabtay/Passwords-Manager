@@ -37,13 +37,13 @@ const decrypt = (encryptedText, ivHex) => {
 };
 
 //
-// REGISTER USER (NO EMAIL)
+// REGISTER USER 
 //
 router.post('/register', async (req, res) => {
   const { userName, password,email } = req.body;
 
   try {
-    // Only username must be unique now
+    // Only username must be unique 
     const userExists = await User.findOne({ userName });
     if (userExists) {
       return res.status(400).json({ error: 'Username already taken' });
@@ -59,7 +59,6 @@ router.post('/register', async (req, res) => {
 
     await newUser.save();
 
-    // Create AccountDetails with userId only
     const account = new AccountDetails({
       userId: newUser._id,
       credentials: [],
@@ -118,21 +117,12 @@ router.post('/login', async (req, res) => {
     user.otp = otp;
     user.otpExpires = Date.now() + 5 * 60 * 1000; // 5 min
     await user.save();
-console.log('user.email',user.email)
     // Send OTP email
     await transporter.sendMail({
       to: user.email,
       subject: "Your Login OTP",
       text: `Your OTP code is: ${otp}`,
     });
-//     await transporter.sendMail({
-//   from: "no-reply@guy1179@gmail.com",
-//   to: user.email,
-//   subject: "Your OTP Code",
-//   html: `<h1>${otp}</h1>`
-// });
-
-
     res.json({ msg: "OTP sent to your email", userId: user._id,email:user.email });
   } catch (err) {
     console.error(err);
@@ -144,13 +134,10 @@ console.log('user.email',user.email)
 //
 // ADD NEW CREDENTIAL
 //
-// Add credentials
 router.post('/credentials/:userId', async (req, res) => {
 
   const { userId } = req.params;
   const { category, websites } = req.body;
-      console.log('websites',websites)
-
   if (!category || !websites || !websites.length || websites.some(w => !w.name || !w.password)) {
     return res.status(400).json({ error: 'Missing fields' });
   }
@@ -181,7 +168,6 @@ router.post('/credentials/:userId', async (req, res) => {
       // If found, push new credential
       account.credentials.push(newCredential);
     }
-
     await account.save();
     res.json(account);
   } catch (err) {
@@ -191,21 +177,15 @@ router.post('/credentials/:userId', async (req, res) => {
 });
 
 
-
-
-
 //
 // GET ALL CREDENTIALS FOR USER (BY ID)
 //
 router.get('/credentials/:userId', async (req, res) => {
   const { userId } = req.params;
-          // console.log('account',userId)
 
   try {
     // Find the AccountDetails document by userId
     const account = await AccountDetails.findOne({ userId });
-          console.log('account',account)
-
     if (!account) {
       return res.status(404).json({ error: 'Account not found' });
     }
@@ -236,9 +216,6 @@ router.get('/credentials/:userId', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
-
-
-
 
 //
 // SEARCH CREDENTIALS BY WEBSITE
@@ -328,10 +305,11 @@ router.delete('/credentials/:userId/:credId', async (req, res) => {
 });
 
 
-
+//
+// VERIFY OTP
+//
 router.post('/verify-otp', async (req, res) => {
   const { userId, otp } = req.body;
-console.log('otp',otp,userId)
   try {
     const user = await User.findById(userId);
     if (!user) return res.status(404).json({ error: "User not found" });
@@ -364,12 +342,6 @@ console.log('otp',otp,userId)
 router.get('/wakeup', (req, res) => {
   res.send('Server is awake!');
 });
-
-// router.get('/wakeup', (req, res) => {
-//   setTimeout(() => {
-//     res.send('Server is awake!');
-//   }, 5000); // 5 seconds
-// });
 
 
 export default router;

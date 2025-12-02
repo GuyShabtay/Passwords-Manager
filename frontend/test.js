@@ -74,8 +74,6 @@ import assert from 'assert';
         console.log('Add Credentials test passed! Successfully added credentials.');
 
         await driver.wait(until.elementLocated(By.id('input-with-sx')), 10000);
-        let searchBox = await driver.findElement(By.id('input-with-sx'));
-        await searchBox.sendKeys('example.com');
 
         await driver.wait(until.elementLocated(By.css('.credentials-container')), 10000);
         

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './HomePage.css';
-import SearchBox from '../SearchBox';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import Credentials from '../Credentials/Credentials';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
-import TabsSwitcher1 from '../TabsSwitcher1';
-import secure from '../../assets/images/sheild1.jpg';
+import TabsSwitcher from '../TabsSwitcher/TabsSwitcher';
 import { Button, Box } from '@mui/material';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 
@@ -28,7 +26,7 @@ const HomePage = () => {
   return (
     <div id='home-page'>
       
-      <TabsSwitcher1 />
+      <TabsSwitcher />
        <Button className="submit-btn" onClick={handleAddCredentials}>
                     <span ><AddRoundedIcon className='add-icon'/></span>
                   </Button>
