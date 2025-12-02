@@ -1,28 +1,42 @@
-# Passwords Manager
-<p>Secure password manager that stores user passwords in an encrypted 
-format and allows users to retrieve and manage their passwords.</p>
+# Passwords Manager  
 
-## How to run this project
+##  Overview  
+**Passwords Manager**  is a secure passwords manager that stores user passwords in an encrypted 
+format and allows users to retrieve and manage their passwords.
 
-<!-- - Add to the backend folder a file called ```.env``` and in that file add these variables: 
+## Install Dependencies
+### Backend
  ```bash
-TOKEN_KEY='your token key'
-MONGODB_URL='your MongoDB url'
-AES_KEY='your AES key'
-  ``` -->
+cd backend
+npm install
+  ```
 
-- Install dependecies:
-<pre><code>npm run install:all</code></pre>
+### Frontend
+ ```bash
+cd frontend
+npm install
+  ```
 
-- Start the application:
-<pre><code>npm start</code></pre>
+  ## Environment Variables
+There is a `.env.example` file in both the **backend** and **frontend** folders.  
+Please create your own `.env` files based on these examples and fill in your own credentials.
+
+## How to Run
+### Backend
+ ```bash
+cd backend
+npm start
+  ```
+
+### Frontend
+ ```bash
+cd frontend
+npm run dev
+  ```
 
 - Enter to this URL on your browser
 <pre><code>http://localhost:5173/</code></pre>
 
-
-- In order to run the tests, while the application is running open a new terminal and write:
-<pre><code>npm test</code></pre>
 
 ## Technologies
 - HTML
@@ -30,29 +44,19 @@ AES_KEY='your AES key'
 - JavaScript
 - React
 - Axios
-- Selenium
-- Mui
 - Node.js
 - Express
 - MongoDB
+- Selenium
+- Mui
+- Argon2 (password-hashing)
 - Bcrypt
-- Cors
-- Dotnev
-- Jsonwebtoken
-- AES
-
-## Features
-- Register
-- Login
-- Add new credentials (website name and pssword)
-- Search for a password by website name
-- Add, view, edit and delete credentials related to a user
-- Logout
+- JWT
+- AES (encryption)
 
 ## Tests
 - Register
 - Login
 - Add new credentials (website name and pssword)
 - Search for a password by website name
-- Add credentials related to a user
 - Logout
